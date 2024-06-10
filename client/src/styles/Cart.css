@@ -18,7 +18,7 @@
     font-size: 1.2rem;
 }
 
-.game {
+.flower {
     display: flex;
     width: 60%;
     align-items: center;
@@ -26,18 +26,14 @@
     gap: 10px;
 }
 
-.game__details {
+.flower__details {
     font-size: 1rem;
     margin: 10px;
 }
 
-.game__details__name {
+.flower__details__name {
     font-weight: bold;
     font-size: 1.2rem;
-}
-
-.game__details__price {
-
 }
 
 .total {

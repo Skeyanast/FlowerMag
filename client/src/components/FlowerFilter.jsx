@@ -4,9 +4,9 @@ import MyInput from './UI/input/MyInput';
 import MySelect from './UI/select/MySelect';
 
 // Компонент для фильтрации постов
-const GameFilter = ({filter, setFilter}) => {
+const FlowerFilter = ({filter, setFilter}) => {
     return ( 
-      <div className="gameFilter">
+      <div className="flowerFilter">
         <MyInput
           value={filter.query}
           onChange={e => setFilter({...filter, query: e.target.value})}
@@ -16,12 +16,12 @@ const GameFilter = ({filter, setFilter}) => {
           value={filter.sort}
           onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
           options={[
-            {value: 'game_id', name: 'Сортировка по id'},
-            {value: 'game_name', name: "Сортировка по названию"}
+            {value: 'id', name: 'Сортировка по id'},
+            {value: 'name', name: "Сортировка по названию"}
           ]}
         />
       </div>
     );
 }
 
-export default GameFilter;
+export default FlowerFilter;

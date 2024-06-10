@@ -28,7 +28,7 @@ exports.GetAdminById = async (req, res) => {
     }
 }
 
-exports.Register = async (req, res) => {
+exports.PostAdminForRegister = async (req, res) => {
   if (
     !req.body.login?.length ||
     !req.body.password?.length ||
@@ -53,7 +53,7 @@ exports.Register = async (req, res) => {
   }
 }
 
-exports.Login = async (req, res) => {
+exports.PostAdminForLogin = async (req, res) => {
   if (!req.body.login?.length || !req.body.password?.length) {
     res.status(400).send('Not_founded_login_or_password_on_post_request');
     return;
@@ -94,7 +94,7 @@ exports.Login = async (req, res) => {
   }
 }
 
-exports.Logout = async (req, res) => {
+exports.GetAdminForLogout = async (req, res) => {
   try {
     let r = await req.db.pool.query(`SELECT * FROM admins WHERE uid = $1 LIMIT 1`, [req.uid])
     if (r.rows.length > 0) {

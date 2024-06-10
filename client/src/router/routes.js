@@ -1,5 +1,5 @@
 import Catalog from "../pages/Catalog";
-import GameIdPage from "../pages/GameIdPage";
+import FlowerIdPage from "../pages/FlowerIdPage";
 import Cart from "../pages/Cart";
 import Profile from "../pages/Profile";
 import Support from "../pages/Support";
@@ -9,8 +9,8 @@ import Login from "../pages/Login";
 // Пути для авторизованного пользователя
 export const privateRoutes = [
     { path: "/", element: <Catalog />, exact: true },
-    { path: "/games", element: <Catalog />, exact: true },
-    { path: "/games/:id", element: <GameIdPage />, exact: true },
+    { path: "/flowers", element: <Catalog />, exact: true },
+    { path: "/flowers/:id", element: <FlowerIdPage />, exact: true },
     { path: "/cart", element: <Cart />, exact: true },
     { path: "/profile", element: <Profile />, exact: true },
     { path: "/support", element: <Support />, exact: true },

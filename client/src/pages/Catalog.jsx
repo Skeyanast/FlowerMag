@@ -1,46 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import '../styles/App.css';
 import '../styles/Catalog.css';
 
-import GameList from '../components/GameList';
-import GameFilter from '../components/GameFilter';
-import { useGames } from '../hooks/useGames';
-import GameService from '../API/GameService';
+import FlowerList from '../components/FlowerList';
+import FlowerFilter from '../components/FlowerFilter';
+import { useFlowers } from '../hooks/useFlowers';
+import FlowerService from '../API/FlowerService';
 import Loader from '../components/UI/Loader/Loader';
 import { useFetching } from '../hooks/useFetching';
+import { AuthContext } from '../context/AuthContext';
 
 // Страница каталога игр
 const Catalog = () => {
-  const [games, setGames] = useState([]); // состояние списка игр в каталоге
 
+  const {user} = useContext(AuthContext);
+  const [flowers, setFlowers] = useState([]); // состояние списка цветов в каталоге
   const [filter, setFilter] = useState({sort: '', query: ''}); // состояние сортировки и поискового запроса
 
   // состояние итогового списка постов после фильтра и сортировки
-  const sortedAndSearchedGames = useGames(games, filter.sort, filter.query);
+  const sortedAndSearchedFlowers = useFlowers(flowers, filter.sort, filter.query);
 
   // метод получения игр в каталог
-  const [fetchGames, isGamesLoading, gameError] = useFetching(async () => {
-    const response = await GameService.getAll();
-    setGames(response.games);
+  const [fetchFlowers, isFlowersLoading, flowerError] = useFetching(async () => {
+    const response = await FlowerService.GetAll(user.token);
+    setFlowers(response.flowers);
   })
 
   // хук, используется при первой загрузке страницы
   useEffect(() => {
-    fetchGames();
+    fetchFlowers();
   }, [])
 
   return (
     <div className="mainContent">
-      <h1 className="catalog__title">Каталог игр</h1>
-      <GameFilter
+      <h1 className="catalog__title">Каталог цветов</h1>
+      <FlowerFilter
         filter={filter}
         setFilter={setFilter}
       />
-      {gameError && <div className="catalog__gameError">{gameError}!</div>}
-      {isGamesLoading
+      {flowerError && <div className="catalog__flowerError">{flowerError}!</div>}
+      {isFlowersLoading
         ? <div className="loader__block"><Loader /></div>
-        : <GameList games={sortedAndSearchedGames} title='Каталог игр' />
+        : <FlowerList flowers={sortedAndSearchedFlowers} title='Каталог цветов' />
       }
     </div>
   );

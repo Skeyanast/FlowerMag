@@ -28,12 +28,11 @@ exports.GetUserById = async (req, res) => {
     }
 }
 
-exports.Register = async (req, res) => {
+exports.PostUserForRegister = async (req, res) => {
   if (
     !req.body.login?.length ||
     !req.body.password?.length ||
-    !req.body.email?.length ||
-    !req.body.name?.length
+    !req.body.email?.length
   ) {
     res.status(400).send('Не полные данные');
     return;
@@ -54,7 +53,7 @@ exports.Register = async (req, res) => {
   }
 }
 
-exports.Login = async (req, res) => {
+exports.PostUserForLogin = async (req, res) => {
   if (!req.body.login?.length || !req.body.password?.length) {
     res.status(400).send('Not_founded_login_or_password_on_post_request');
     return;
@@ -95,7 +94,7 @@ exports.Login = async (req, res) => {
   }
 }
 
-exports.Logout = async (req, res) => {
+exports.GetUserForLogout = async (req, res) => {
   try {
     let r = await req.db.pool.query(`SELECT * FROM users WHERE uid = $1 LIMIT 1`, [req.uid]);
     if (r.rows.length > 0) {

@@ -9,14 +9,14 @@ import MyModal from '../MyModal/MyModal';
 
 // Компонент навигационной панели
 const Navbar = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext); // состояние авторизованности
+    const {user, setUser} = useContext(AuthContext); // состояние авторизованности
     const [modalMenu, setModalMenu] = useState(false); // состояние модального окна
     const navigate = useNavigate(); // функция редиректа
 
     // функция логаута
     const logout = () => {
         navigate(`/`, {replace: false});
-        setIsAuth(false);
+        setUser(null);
         localStorage.removeItem('auth');
     }
 
@@ -24,7 +24,7 @@ const Navbar = () => {
         <header className={cl.navbar}>
             <div className={cl.navbar__items}>
                 <Link to="/" className={cl.navbar__link}>
-                    XTHs Games
+                    FlowerMag
                 </Link>
                 <div onClick={() => setModalMenu(true)} className={cl.navbar__link}>
                     Меню

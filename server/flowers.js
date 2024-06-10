@@ -9,18 +9,22 @@ exports.GetAllFlowers = async (req, res) => {
 }
 
 exports.GetFlowerById = async (req, res) => {
+    if (!req.params.id) {
+        res.status(400).send('Некорректный идентификатор цветка');
+        return;
+    }
     if (!req.uid) {
       res.status(401).send('Авторизуйтесь');
       return;
     }
     
     try {
-      const r = await req.db.pool.query("SELECT * FROM flowers WHERE id = $1", [req.id]);
-      if (r.rows?.length) {
-        res.json({err: '', flower: r.rows[0]});
-        return;
-      }
-      res.status(404).send('Не найден');
+        const r = await req.db.pool.query("SELECT * FROM flowers WHERE id = $1", [Number(req.params.id)]);
+        if (r.rows?.length) {
+            res.json({err: '', flower: r.rows[0]});
+            return;
+        }
+        res.status(404).send('Не найден');
     } catch(e) {
       res.status(500).send(e.message);
     }
@@ -106,7 +110,7 @@ exports.DeleteFlower = async (req, res) => {
             return;
         }
 
-const r = await req.db.pool.query(`DELETE FROM flowers WHERE id = $1`, [req.body.id]);
+        const r = await req.db.pool.query(`DELETE FROM flowers WHERE id = $1`, [req.body.id]);
         res.status(200).json({ err: '', status: 'success' });
     } catch (e) {
         console.error(e);

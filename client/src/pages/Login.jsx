@@ -6,6 +6,7 @@ import '../styles/Login.css';
 
 import MyInput from '../components/UI/input/MyInput';
 import MyButton from '../components/UI/button/MyButton';
+import LoginController from '../components/LoginController';
 
 // Страница авторизации
 const Login = () => {
@@ -26,47 +27,16 @@ const Login = () => {
         localStorage.setItem('auth', 'true');
     }
 
-    /*
-    switch (step) {
-        case 1:
-            return (
-                <LoginForm />
-            )
-        case 2:
-            return (
-                <Success />
-            )
-        default:
-            return null;
-    }
-    */
-
     return (
         <div className="mainContent">
-            <h1 className="loginPage__title">XTNs Games</h1>
+            <h1 className="loginPage__title">FlowerMag</h1>
             <div className="login__block">
                 <div className="login__title">
-                    Вход в аккаунт XTN
+                    Вход в аккаунт FlowerMag
                 </div>
-                <form onSubmit={entry} className="login__form">
-                    <MyInput
-                        value={formData.login}
-                        onChange={e => setFormData({...formData, login: e.target.value})}
-                        //required={true}
-                        type="text"
-                        placeholder='Введите логин'
-                    />
-                    <MyInput
-                        value={formData.password}
-                        onChange={e => setFormData({...formData, password: e.target.value})}
-                        //required={true}
-                        type="password"
-                        placeholder='Введите пароль'
-                    />
-                    <MyButton type="submit">
-                        Войти
-                    </MyButton>
-                </form>
+                <div>
+                    <LoginController />
+                </div>
             </div>
         </div>
     )
