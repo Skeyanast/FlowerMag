@@ -9,6 +9,7 @@ exports.GetAllFlowers = async (req, res) => {
 }
 
 exports.GetFlowerById = async (req, res) => {
+    //console.log('GetFlowerById req.params.id: ', req.params.id);
     if (!req.params.id) {
         res.status(400).send('Некорректный идентификатор цветка');
         return;
@@ -19,9 +20,10 @@ exports.GetFlowerById = async (req, res) => {
     }
     
     try {
-        const r = await req.db.pool.query("SELECT * FROM flowers WHERE id = $1", [Number(req.params.id)]);
+        const paramsId = req.params.id;
+        const r = await req.db.pool.query("SELECT * FROM flowers WHERE id = $1", [paramsId]);
         if (r.rows?.length) {
-            res.json({err: '', flower: r.rows[0]});
+            res.status(200).json({err: '', flower: r.rows[0]});
             return;
         }
         res.status(404).send('Не найден');

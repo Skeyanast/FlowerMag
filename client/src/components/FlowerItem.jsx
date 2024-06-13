@@ -17,9 +17,9 @@ const FlowerItem = (props) => {
     // функция добавления товара в корзину
     const addOnCart = () => {
         const flower = props.flower;
-        if (!cartFlowers.some(g => g.id === flower.id)) {
-            setCartFlowers([...cartFlowers, flower]);
-        }
+        //проверка отсутствия наличия товара с данным id в корзине
+        //if (!cartFlowers.some(g => g.id === flower.id)) { }
+        setCartFlowers([...cartFlowers, flower]);
     }
 
     return (

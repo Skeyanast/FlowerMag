@@ -17,8 +17,11 @@ const Cart = () => {
     };
 
     // Вычисление общей стоимости игр
-    const total = cartFlowers.reduce((acc, flower) => acc + (typeof flower.price === 'number' ? flower.price : 0), 0);
-
+    const total = cartFlowers.reduce((acc, flower) => {
+        const price = typeof flower.price === 'string' ? parseFloat(flower.price) : flower.price;
+        return acc + (typeof price === 'number' ? price : 0);
+    }, 0);
+    // Заглушка для кнопки покупки
     const purchaseFlowers = (event) => {
         event.preventDefault();
         alert("Покупка на сумму: " + total.toFixed(2));
@@ -36,7 +39,15 @@ const Cart = () => {
                         <div key={flower.id} className="flower">
                             <div className="flower__details">
                                 <div className="flowerdetailsname">{flower.name}</div>
-                                <div className="flowerdetailsprice">Стоимость: {typeof flower.price === 'number' ? flower.price.toFixed(2) : 'Н/Д'}</div>
+                                <div className="flowerdetailsprice">
+                                    Стоимость: {
+                                        typeof flower.price === 'string'
+                                        ? parseFloat(flower.price).toFixed(2)
+                                        : typeof flower.price === 'number'
+                                        ? flower.price.toFixed(2)
+                                        : 'Н/Д'
+                                    }
+                                </div>
                             </div>
                             <MyButton onClick={() => removeFlower(flower.id)}>Удалить из корзины</MyButton>
                         </div>

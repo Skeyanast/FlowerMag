@@ -24,7 +24,6 @@ const LoginForm = () => {
     const [fetchUser, isLoginLoading, loginError] = useFetching(async () => {
         const response = await UserService.Login(logFormData.login, logFormData.password);
         setUser(response.user);
-        //console.log(response);
     })
 
     // Функция отправки формы
@@ -33,7 +32,6 @@ const LoginForm = () => {
         if (logFormStep === 1) {
             fetchUser();
             setLogFormData({login: '', password: ''});
-            transitToCatalog();
         }
         else {
             setLogFormStep(1);

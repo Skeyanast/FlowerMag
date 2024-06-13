@@ -109,6 +109,7 @@ exports.GetUserForLogout = async (req, res) => {
 }
 
 exports.CheckAuth = async (req, res, next) => {  
+  //console.log('Users req.params: ', req.params);
   if (req.token?.length) {    
     try {
       const user = jwt.verify(req.token, process.env.JWT_SIGN);  
