@@ -61,7 +61,7 @@ const LoginForm = () => {
                             :
                             <>
                                 <label>
-                                    Вход в аккаунт webSynth
+                                    Вход в аккаунт
                                 </label>
                                 <input
                                     value={logFormData.login}

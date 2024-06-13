@@ -35,7 +35,7 @@ const Support = () => {
                 <div className="popularQuestions__list">
                     <div className="popularQuestions__item">
                         <div className="popularQuestions__item__content">
-                            Если мне не понравится игра, могу ли я вернуть свои деньги?
+                            Если мне не понравится товар, могу ли я вернуть свои деньги?
                         </div>
                         <button className="popularQuestions__item__button">
                             Развернуть
@@ -44,14 +44,6 @@ const Support = () => {
                     <div className="popularQuestions__item">
                         <div className="popularQuestions__item__content">
                             Какими способами я могу оплатить товар?
-                        </div>
-                        <button className="popularQuestions__item__button">
-                            Развернуть
-                        </button>
-                    </div>
-                    <div className="popularQuestions__item">
-                        <div className="popularQuestions__item__content">
-                            Как активировать купленный ключ?
                         </div>
                         <button className="popularQuestions__item__button">
                             Развернуть

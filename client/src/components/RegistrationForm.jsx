@@ -19,7 +19,7 @@ const RegistrationForm = () => {
     // Функция отправки формы регистрации
     const Register = async (event) => {
         event.preventDefault();
-        if (regFormStep == 1) {
+        if (regFormStep === 1) {
             fetchRegister();
             setRegFormData({login: '', password: '', email: ''});
         }
@@ -49,7 +49,7 @@ const RegistrationForm = () => {
                             :
                             <>
                                 <label>
-                                    Создание аккаунта FlowerMag
+                                    Создание аккаунта
                                 </label>
                                 <input
                                     value={regFormData.login}

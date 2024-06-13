@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
@@ -55,10 +55,10 @@ const LoginController = () => {
 
     // Представление компонента для неавторизованного пользователя
     const no_authorized_view = (
-        <>
+        <div className="login_methods">
             <RegistrationForm />
             <LoginForm />
-        </>
+        </div>
     );
 
     return (

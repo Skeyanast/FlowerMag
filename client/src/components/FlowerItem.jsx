@@ -57,7 +57,7 @@ const FlowerItem = (props) => {
             </div>
             <div className="flower__buttons">
                 <MyButton onClick={() => transitToFlower(props.flower.id)}>
-                    Открыть страницу игры
+                    Открыть страницу позиции
                 </MyButton>
                 <MyButton onClick={addOnCart}>
                     Добавить в корзину

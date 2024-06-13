@@ -20,7 +20,8 @@ const Navbar = () => {
         localStorage.removeItem('auth');
     }
 
-    return (
+    const authorized_view = (
+        <>
         <header className={cl.navbar}>
             <div className={cl.navbar__items}>
                 <Link to="/" className={cl.navbar__link}>
@@ -53,6 +54,27 @@ const Navbar = () => {
                 </div>
             </div>
         </header>
+        </>
+    );
+
+    const no_authorized_view = (
+        <>
+        <header className={cl.navbar}>
+            <div className={cl.navbar__items}>
+                <Link to="/" className={cl.navbar__link}>
+                    FlowerMag
+                </Link>
+            </div>
+        </header>
+        </>
+    );
+
+    return (
+        user
+        ?
+        authorized_view
+        :
+        no_authorized_view
     )
 }
 
